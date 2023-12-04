@@ -1,0 +1,18 @@
+version: '3'
+services:
+  localbroker:
+    image: eclipse-mosquitto
+    container_name: localbroker
+    ports:
+      - "7890:7890"
+      - "7891:7891"
+    volumes:
+      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:rw
+      - ./mosquitto/data:/mosquitto/data:rw
+      - ./mosquitto/log:/mosquitto/log:rw
+      - ./mosquitto/pass.txt:/mosquitto/pass.txt
+
+
+networks:
+  default:
+    name: localbroker-network
